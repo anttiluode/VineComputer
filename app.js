@@ -29,7 +29,7 @@ function renderChart(){const svg=$('fitnessChart'),rows=state.experiment.history
   $('chartRange').textContent=rows.length?`Generation 1–${rows.length} · holdout worlds vary`:'Awaiting first generation';const last=rows.at(-1);$('chartCallout').textContent=last?`Latest unseen: selection ${number(last.holdout)} · drift ${number(last.driftHoldout)}`:'A winning lineage is not guaranteed.';
 }
 function canvasSetup(ctx,w,h){const dpr=window.devicePixelRatio||1;const cv=ctx.canvas,cssw=cv.getBoundingClientRect().width;const cssH=cssw*710/1000;const realW=Math.max(1,Math.round(cssw*dpr)),realH=Math.max(1,Math.round(cssH*dpr));if(cv.width!==realW||cv.height!==realH){cv.width=realW;cv.height=realH;}ctx.setTransform(realW/1000,0,0,realH/710,0,0);}
-function draw(){const cv=$('garden'),ctx=cv.getContext('2d');if(!ctx)return;canvasSetup(ctx);const W=1000,H=710;ctx.clearRect(0,0,W,H);
+function draw(){const cv=$('garden'),ctx=cv.getContext('2d');if(!ctx)return;$('frameValue').textContent=Math.round(state.progress*100)+'%';canvasSetup(ctx);const W=1000,H=710;ctx.clearRect(0,0,W,H);
   // Atmospheric gradient and depth grid—drawn live, not a rendered image.
   const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#183023');bg.addColorStop(.75,'#13291e');bg.addColorStop(1,'#233523');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
   ctx.strokeStyle='rgba(186,211,174,.055)';ctx.lineWidth=1;for(let x=70;x<W;x+=65){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}for(let y=46;y<H;y+=61){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
