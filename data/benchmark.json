@@ -1,0 +1,243 @@
+{
+  "protocol": "Exploratory simulation; 8 deterministic seeds, 24 plants, 24 generations per scenario; no out-of-sample benchmark frozen before implementation",
+  "seeds": [
+    7,
+    19,
+    31,
+    43,
+    59,
+    71,
+    83,
+    97
+  ],
+  "scenarios": [
+    {
+      "scenario": "patches",
+      "seedCount": 8,
+      "generations": 24,
+      "meanFirstHoldout": 34.74025489749256,
+      "meanLastHoldout": 41.41152499245227,
+      "meanLastNeutral": 27.47325754583875,
+      "meanDifference": 13.938267446613525,
+      "wins": 6,
+      "rows": [
+        {
+          "seed": 7,
+          "firstSelection": 28.788565186954184,
+          "lastSelection": 39.36745739358868,
+          "lastNeutral": 26.28912212868866,
+          "lastTrain": 60.48502979094527,
+          "difference": 13.07833526490002
+        },
+        {
+          "seed": 19,
+          "firstSelection": 32.26616346496856,
+          "lastSelection": 51.75364078856787,
+          "lastNeutral": 28.274649110106743,
+          "lastTrain": 59.63380429017965,
+          "difference": 23.478991678461128
+        },
+        {
+          "seed": 31,
+          "firstSelection": 32.19541269104381,
+          "lastSelection": 28.221436348099832,
+          "lastNeutral": 17.808731802716473,
+          "lastTrain": 61.82770750788321,
+          "difference": 10.41270454538336
+        },
+        {
+          "seed": 43,
+          "firstSelection": 42.94178916463586,
+          "lastSelection": 45.516135009248764,
+          "lastNeutral": 5.942675749112877,
+          "lastTrain": 56.23953940574918,
+          "difference": 39.573459260135884
+        },
+        {
+          "seed": 59,
+          "firstSelection": 31.967195376852153,
+          "lastSelection": 45.79606390779948,
+          "lastNeutral": 27.63836059621078,
+          "lastTrain": 66.51644482401124,
+          "difference": 18.157703311588698
+        },
+        {
+          "seed": 71,
+          "firstSelection": 40.07089669140909,
+          "lastSelection": 39.35926659834136,
+          "lastNeutral": 25.093031093606495,
+          "lastTrain": 60.76554492911081,
+          "difference": 14.266235504734862
+        },
+        {
+          "seed": 83,
+          "firstSelection": 30.071905103800116,
+          "lastSelection": 35.37820581801142,
+          "lastNeutral": 42.007637482239865,
+          "lastTrain": 62.85069595352918,
+          "difference": -6.629431664228441
+        },
+        {
+          "seed": 97,
+          "firstSelection": 39.620111500276764,
+          "lastSelection": 45.89999407596076,
+          "lastNeutral": 46.73185240402809,
+          "lastTrain": 64.18377536145826,
+          "difference": -0.8318583280673266
+        }
+      ]
+    },
+    {
+      "scenario": "corridor",
+      "seedCount": 8,
+      "generations": 24,
+      "meanFirstHoldout": 12.538029219234515,
+      "meanLastHoldout": 18.456516288499067,
+      "meanLastNeutral": -0.38977317974825776,
+      "meanDifference": 18.84628946824732,
+      "wins": 8,
+      "rows": [
+        {
+          "seed": 7,
+          "firstSelection": 0.8168288663677294,
+          "lastSelection": 18.554447516219028,
+          "lastNeutral": 0.133557763905425,
+          "lastTrain": 30.8096733366565,
+          "difference": 18.420889752313602
+        },
+        {
+          "seed": 19,
+          "firstSelection": 25.174095910837273,
+          "lastSelection": 10.991142109130896,
+          "lastNeutral": 2.299367025921732,
+          "lastTrain": 40.74188682949084,
+          "difference": 8.691775083209164
+        },
+        {
+          "seed": 31,
+          "firstSelection": 7.250859369859802,
+          "lastSelection": 15.14773950701785,
+          "lastNeutral": 7.162036040991106,
+          "lastTrain": 41.818847223187774,
+          "difference": 7.985703466026743
+        },
+        {
+          "seed": 43,
+          "firstSelection": 9.146551218960553,
+          "lastSelection": 18.811780081249605,
+          "lastNeutral": -14.83242332413757,
+          "lastTrain": 36.80683990711661,
+          "difference": 33.644203405387174
+        },
+        {
+          "seed": 59,
+          "firstSelection": 18.111223564435445,
+          "lastSelection": 14.948175361587962,
+          "lastNeutral": -2.0078699200752608,
+          "lastTrain": 37.77121834494652,
+          "difference": 16.956045281663222
+        },
+        {
+          "seed": 71,
+          "firstSelection": 17.879715025880337,
+          "lastSelection": 26.4076436545595,
+          "lastNeutral": -18.059600180608104,
+          "lastTrain": 41.68981330674913,
+          "difference": 44.46724383516761
+        },
+        {
+          "seed": 83,
+          "firstSelection": 13.671957207557579,
+          "lastSelection": 26.880816891088124,
+          "lastNeutral": 14.475898197001607,
+          "lastTrain": 38.208172102876055,
+          "difference": 12.404918694086517
+        },
+        {
+          "seed": 97,
+          "firstSelection": 8.253002589977399,
+          "lastSelection": 15.910385187139548,
+          "lastNeutral": 7.710848959015003,
+          "lastTrain": 40.629340077301926,
+          "difference": 8.199536228124545
+        }
+      ]
+    },
+    {
+      "scenario": "seasonal",
+      "seedCount": 8,
+      "generations": 24,
+      "meanFirstHoldout": 28.914660838620907,
+      "meanLastHoldout": 37.453121074718325,
+      "meanLastNeutral": 23.924435275511023,
+      "meanDifference": 13.528685799207302,
+      "wins": 7,
+      "rows": [
+        {
+          "seed": 7,
+          "firstSelection": 32.159085837352464,
+          "lastSelection": 37.97096869954703,
+          "lastNeutral": 24.43622816261712,
+          "lastTrain": 56.33057301523884,
+          "difference": 13.53474053692991
+        },
+        {
+          "seed": 19,
+          "firstSelection": 30.755668346097828,
+          "lastSelection": 39.777927575625014,
+          "lastNeutral": 24.14792883174542,
+          "lastTrain": 64.92720332408098,
+          "difference": 15.629998743879593
+        },
+        {
+          "seed": 31,
+          "firstSelection": 24.481328899287952,
+          "lastSelection": 36.725088795611455,
+          "lastNeutral": 33.51620031256908,
+          "lastTrain": 53.41425684560941,
+          "difference": 3.2088884830423723
+        },
+        {
+          "seed": 43,
+          "firstSelection": 21.786736173233873,
+          "lastSelection": 39.329819334322174,
+          "lastNeutral": 15.12243607518344,
+          "lastTrain": 60.90194696010578,
+          "difference": 24.207383259138734
+        },
+        {
+          "seed": 59,
+          "firstSelection": 39.839473381889704,
+          "lastSelection": 23.544313734348464,
+          "lastNeutral": 23.55188507873161,
+          "lastTrain": 66.80550914716022,
+          "difference": -0.0075713443831446625
+        },
+        {
+          "seed": 71,
+          "firstSelection": 15.630774342713924,
+          "lastSelection": 36.814959131848994,
+          "lastNeutral": 18.43805443717084,
+          "lastTrain": 55.43675482107026,
+          "difference": 18.376904694678153
+        },
+        {
+          "seed": 83,
+          "firstSelection": 25.723867579248026,
+          "lastSelection": 43.337521521460054,
+          "lastNeutral": 28.922471593604506,
+          "lastTrain": 57.195202874125,
+          "difference": 14.415049927855549
+        },
+        {
+          "seed": 97,
+          "firstSelection": 40.94035214914348,
+          "lastSelection": 42.124369804983395,
+          "lastNeutral": 23.260277712466138,
+          "lastTrain": 62.004173130008134,
+          "difference": 18.864092092517257
+        }
+      ]
+    }
+  ]
+}

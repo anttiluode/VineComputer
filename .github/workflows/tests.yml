@@ -1,0 +1,21 @@
+name: Check evolution model
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - name: Check generated benchmark has tracked numerical summary
+        run: |
+          test -s data/benchmark.json
+          node -e "const d=require('./data/benchmark.json'); if(d.scenarios.length!==3) process.exit(1)"

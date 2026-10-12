@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {rng,createWorld,initialGenome,grow,evalGenome,mutate,Evolution,DEFAULTS,RULES} from '../sim.mjs';
+test('seeded generator is deterministic',()=>{const a=rng(18),b=rng(18);assert.deepEqual(Array.from({length:100},a),Array.from({length:100},b));});
+test('world resources bounded and reproducible',()=>{for(const s of ['patches','seasonal','corridor']){const a=createWorld(100,s);assert.deepEqual(a,createWorld(100,s));assert.ok(a.resources.every(x=>x.x>=0&&x.x<=1&&x.y>=0&&x.y<=1));}});
+test('genome mutation remains feasible',()=>{const random=rng(20);for(const rule of RULES){let g=initialGenome(rule.id,random);for(let i=0;i<500;i++){g=mutate(g,random,.35);assert.ok(g.genes.every(x=>x>=0&&x<=1));assert.ok(RULES.some(z=>z.id===g.rule));}}});
+test('growth deterministic given genome/world/random seed',()=>{const a=initialGenome('heliotrope',rng(1)),w=createWorld(9);const x=grow(a,w,42),y=grow(a,w,42);assert.deepEqual(x,y);});
+test('visible animation frames obey final drawing',()=>{const g=initialGenome('forager',rng(2)),w=createWorld(7,'seasonal');const x=grow(g,w,13);assert.ok(x.frames.length>0&&x.segments.length>0);assert.equal(x.frames.at(-1).segments,x.segments.length);assert.ok(x.frames.every(f=>f.segments<=x.segments.length));});
+test('no fitness without a physical growth trace',()=>{const r=grow(initialGenome('explorer',rng(3)),createWorld(3),5);assert.ok(Number.isFinite(r.fitness));assert.ok(r.wire>=0&&r.coverage<=7&&r.collisions>=0);});
+test('evolution reproducible and population size conserved',()=>{const a=new Evolution(2025,'patches',12),b=new Evolution(2025,'patches',12);for(let i=0;i<4;i++){const x=a.advance(),y=b.advance();assert.deepEqual(x,y);assert.equal(a.populationA.length,12);assert.equal(a.populationB.length,12);}});
+test('holdout data never used by selection',()=>{const e=new Evolution(81,'corridor',12);const w=e.worlds(0),h=e.holdout(0);assert.notDeepEqual(w[0],h);assert.notDeepEqual(w[1],h);});
+test('selected and neutral-control genomes start identical',()=>{const e=new Evolution(8,'patches',12);assert.deepEqual(e.populationA,e.populationB);});
