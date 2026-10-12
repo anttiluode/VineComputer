@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101912">
+  <meta name="description" content="An evolutionary garden where six local growth rules compete, mutate, branch, and leave a measurable lineage. An open computational experiment.">
+  <title>VineComputer — an evolving garden of rules</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="brandmark" aria-hidden="true">❦</div><div><div class="brand-title">VINE<span>COMPUTER</span></div><div class="brand-sub">A LABORATORY OF GROWING RULES</div></div></div>
+    <div class="header-side"><span class="live-dot"></span><span>Evolution, not illustration</span><a href="https://github.com/anttiluode/VineComputer" rel="noopener" target="_blank" class="github-link">GitHub ↗</a></div>
+  </header>
+  <section class="introduction">
+    <div class="eyebrow"><span>FIELD NOTES / EXPERIMENT 001</span> <span class="faint">OCTOBER 2026</span></div>
+    <h1>What if the <em>rules of growth</em> could grow better?</h1>
+    <p>Six ways of exploring a landscape. Every vine spends length to reach light. The successful rules leave descendants; their genes mutate; new worlds test whether adaptation survives outside the nursery.</p>
+  </section>
+  <main class="lab-grid">
+    <section class="garden-panel panel">
+      <div class="panel-header">
+        <div><div class="section-number">01 / THE SPECIMEN</div><h2 id="specimenTitle">The evolving canopy</h2></div>
+        <div class="seed-badge"><span class="seed-label">SEED</span><span id="seedBadge">20251012</span></div>
+      </div>
+      <div class="garden-toolbar">
+        <div class="segmented" role="group" aria-label="Visualized environment">
+          <button id="viewTraining" class="active" type="button">Nursery world</button>
+          <button id="viewHoldout" type="button">Unseen world</button>
+        </div>
+        <label class="quiet-label" for="frameSlider">GROWTH <output id="frameValue">0%</output></label>
+        <input id="frameSlider" type="range" min="0" max="100" value="100" aria-label="Growth stage">
+      </div>
+      <div class="canvas-stage">
+        <canvas id="garden" width="1000" height="710" role="img" aria-label="Simulation of growing branches in a resource landscape"></canvas>
+        <div class="legend"><span><i class="legend-dot resource"></i>Resources</span><span><i class="legend-dot stone"></i>Obstacles</span><span><i class="legend-line"></i>Living branches</span></div>
+        <div class="stage-hint">Each branch is grown by an inherited, local rule—not drawn from a preset fractal.</div>
+      </div>
+      <div class="measurements">
+        <div><div class="stat-label">GENERATION</div><div class="stat-number" id="generationStat">0<span class="stat-small"> / ∞</span></div></div>
+        <div><div class="stat-label">NURSERY FITNESS</div><div class="stat-number" id="fitnessStat">—</div></div>
+        <div><div class="stat-label">UNSEEN FITNESS</div><div class="stat-number" id="holdoutStat">—</div></div>
+        <div><div class="stat-label">PATCHES REACHED</div><div class="stat-number" id="patchesStat">—</div></div>
+      </div>
+    </section>
+    <aside class="control-panel panel">
+      <div class="panel-header"><div><div class="section-number">02 / EXPERIMENT CONTROLS</div><h2>Breed the garden</h2></div><span class="mini-symbol">✳</span></div>
+      <label class="field-label" for="scenarioSelect">THE ENVIRONMENT</label>
+      <select id="scenarioSelect"><option value="patches">Patchy canopy</option><option value="corridor">Split light corridors</option><option value="seasonal">Moving sunlight</option></select>
+      <p class="input-note" id="scenarioHelp">Scattered light pockets among obstacles. Growing costs energy.</p>
+      <div class="dual-inputs">
+        <div><label class="field-label" for="populationSelect">POPULATION</label><select id="populationSelect"><option value="24">24 seedlings</option><option value="36" selected>36 seedlings</option><option value="60">60 seedlings</option></select></div>
+        <div><label class="field-label" for="seedInput">RANDOM SEED</label><input type="number" id="seedInput" min="1" step="1" value="20251012"></div>
+      </div>
+      <div class="slider-head"><label class="field-label" for="mutationSlider">MUTATION STRENGTH</label><output id="mutationValue">0.13</output></div>
+      <input id="mutationSlider" type="range" min="0.02" max="0.35" step="0.01" value="0.13">
+      <p class="input-note">Only the seven growth traits and an occasional rule-family switch are inherited. There is no task-specific hand steering.</p>
+      <div class="primary-actions"><button class="button button-primary" id="runButton" type="button"><span id="runIcon">▶</span><span id="runLabel">Run evolution</span></button><button class="button button-secondary" id="stepButton" type="button">+ 1 generation</button></div>
+      <div class="secondary-actions"><button type="button" id="resetButton">↺ New experiment</button><button type="button" id="exportButton">↓ Export JSON</button></div>
+      <div class="divider-line"></div>
+      <div class="gene-title-row"><div><div class="section-number">CURRENT CHAMPION</div><h3 id="ruleName">Unplanted</h3></div><div class="rule-bloom" id="ruleSymbol">✿</div></div>
+      <p id="ruleDescription" class="input-note">Advance one generation to select a winner.</p>
+      <div id="geneBars" class="gene-bars" aria-label="Current champion inherited traits"></div>
+      <div class="gene-note">Trait length indicates the inherited parameter. High values are not automatically better.</div>
+    </aside>
+    <section class="history-panel panel">
+      <div class="panel-header"><div><div class="section-number">03 / THE GENERATIONAL RECORD</div><h2>Selection against chance</h2></div><div class="chart-legend"><span><i class="line-key selected"></i>Selection</span><span><i class="line-key neutral"></i>Neutral drift</span></div></div>
+      <p class="panel-lead">Each generation tests fresh landscapes. The curves below show fitness on a <strong>separate unseen world</strong>, never used to choose parents. Neutral drift has the same population and mutation budget, but parents are chosen without fitness selection.</p>
+      <div class="history-chart-wrap"><svg viewBox="0 0 900 285" id="fitnessChart" role="img" aria-label="Holdout fitness by generation for selection versus neutral drift"></svg></div>
+      <div class="chart-footer"><span id="chartRange">Awaiting first generation</span><span id="chartCallout">A winning lineage is not guaranteed.</span></div>
+      <div class="records-header"><h3>Herbarium / inspect a generation</h3><span id="recordsCount">0 specimens archived</span></div>
+      <div class="records-scroll"><table class="records-table"><thead><tr><th>GEN</th><th>WINNING RULE</th><th>NURSERY</th><th>UNSEEN</th><th>DRIFT</th><th>PATCHES</th></tr></thead><tbody id="recordsBody"><tr><td colspan="6" class="empty-record">The garden is waiting for its first generation.</td></tr></tbody></table></div>
+    </section>
+    <section class="method-panel panel">
+      <div class="panel-header"><div><div class="section-number">04 / WHAT IS REALLY EVOLVING?</div><h2>The rules, not a picture</h2></div><span class="mini-symbol">↗</span></div>
+      <div class="method-columns"><div><h3>Growth</h3><p>A local tip follows weighted resource cues, keeps its previous direction, avoids obstacles, explores randomly, and may branch. Every segment costs length. Reaching a resource earns fitness.</p></div><div><h3>Inheritance</h3><p>Six rule families compete. Each carries seven continuous traits. Fitness-based tournament selection retains a champion and mutates descendants; a same-budget neutral population evolves without selection.</p></div><div><h3>Evidence boundary</h3><p>This is an abstract evolutionary-developmental sandbox, <strong>not</strong> simulated plant physiology or proof of neuron-like intelligence. The unseen test changes each generation, so inspect trends across seeds, not one lucky winner.</p></div></div>
+      <div class="method-foot">SOURCE & TESTS <a href="https://github.com/anttiluode/VineComputer" target="_blank" rel="noopener">anttiluode/VineComputer ↗</a> <span>NO SERVER · SEEDED EXPERIMENTS · MIT</span></div>
+    </section>
+  </main>
+  <footer>VINECOMPUTER <span>·</span> An experimental garden at the boundary of growth, memory, and computation.</footer>
+</div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
